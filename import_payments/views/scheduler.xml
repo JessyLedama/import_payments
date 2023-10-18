@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="ir_cron_schedule_import_data" model="ir.cron">
+        <field name="name">Scheduled Import Data</field>
+        <field name="model_id" ref="import_payments.payment_import"/>
+        <field name="state">code</field>
+        <field name="code">payment_import.import_payments()</field>
+        <field name="interval_type">hours</field>
+        <field name="interval_number" eval="1" /> <!-- Change this value to set the interval -->
+        <field name="numbercall" eval="1" />
+        <field name="nextcall" eval="(DateTime.now() + relativedelta(hours=1)).strftime('%Y-%m-%d %H:%M:%S')" />
+        <field name="active" eval="True" />
+    </record>
+</odoo>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    
+
+    <record id="view_payment_import_form" model="ir.ui.view">
+        <field name="name">payment.import.form</field>
+        <field name="model">payment.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="directory_path"/>
+                    <field name="frequency"/>
+                </group>
+
+                <group>
+                    <button string="Import Payments" type="object" class="oe_highlight" icon="fa-check" name="import_payments"/>
+                </group>
+                <footer>
+                    <button string="Import Payments" type="object" class="oe_highlight" icon="fa-check" name="import_payments"/>
+                    <button string="Cancel" class="oe_secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_payment_import_list" model="ir.ui.view">
+        <field name="name">payment.import.tree</field>
+        <field name="model">payment.import</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="directory_path"/>
+                <field name="frequency"/>                
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_payment_import_tree">
+        <field name="name">Payment Import</field>
+        <field name="res_model">payment.import</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Import Payments"
+        id="menu_main_import_payments"
+        groups="account.group_account_readonly,account.group_account_invoice"
+        web_icon="account,static/description/icon.png"
+        action="action_payment_import_tree"
+        />
+</odoo>

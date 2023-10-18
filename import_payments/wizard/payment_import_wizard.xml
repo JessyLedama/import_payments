@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="action_payment_import_wizard" model="ir.actions.act_window">
+        <field name="name">Import Payments</field>
+        <field name="res_model">payment.import</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="import_payments.view_payment_import_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_import_payments" name="Import Payments" parent="account.menu_finance_receivables" 
+          action="action_payment_import_wizard" sequence="10" 
+          groups="base.group_user"/>
+
+</odoo>
